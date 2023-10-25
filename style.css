@@ -1,5 +1,8 @@
 :root{
-    --border-color: #d27979;
+    --bg-color: #FFFFFF;
+    --app-color: #EEEEEE;
+    --dark-text: #686868;
+    --red-pink: #FF6666;
 }
 
 *,
@@ -13,28 +16,28 @@
 body {
   font-family: 'Roboto', sans-serif;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url(./background.jpg) no-repeat;
+  /* background: url(./bgtemp.jpg) no-repeat; */
+  background-color: var(--bg-color);
   background-position: center;
   background-size: cover;
 }
 
 .container {
-  width: 400px;
   height: auto;
   min-height: 400px;
-  padding: 30px;
-  background: transparent;
-  border: 2px solid var(--border-color);
+  padding: 1rem;
+  margin: 1rem;
+  /* background: transparent; */
+  background-color: var(--app-color);
+  /* border: 2px solid var(--border-color); */
   border-radius: 10px;
-  backdrop-filter: blur(15px);
+  /* backdrop-filter: blur(15px); */
 }
 
 h1 {
-  color: #eee;
-  text-align: center;
+  color: var(--dark-text);
+  font-weight: 400;
+  text-align: left;
   margin-bottom: 36px;
 }
 
@@ -42,28 +45,29 @@ h1 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  width: 50%;
 }
 
 .todo-input {
   flex: 1;
   outline: none;
   padding: 10px 10px 10px 20px;
-  background-color: transparent;
-  border: 2px solid var(--border-color);
-  border-radius: 30px;
-  color: #eee;
+  background-color: var(--bg-color);
+  border-radius: 1rem;
+  border-style: none;
+  color: var(--dark-text);
   font-size: 16px;
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 
 .todo-input::placeholder {
-  color: #fabfbf;
+  color: var(--dark-text);
 }
 
 .add-button {
   border: none;
   outline: none;
-  background: var(--border-color);
+  background-image: linear-gradient(to top right, #FF9A8B, #FF6A88, #FF99AC);
   color: #fff;
   font-size: 2.5rem;
   cursor: pointer;
@@ -85,12 +89,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ac3939;
+  background-color: var(--bg-color);
   border-radius: 5px;
-  margin: 10px 0;
+  margin-top: 10px;
   padding: 10px 12px;
-  border: 2px solid var(--border-color);
-  transition: all 0.2s ease;
+  transition: 200ms;
 }
 
 .todo:first-child {
@@ -102,7 +105,9 @@ h1 {
 }
 
 .todo:hover {
-  background-color:var(--border-color);
+  border: 2px solid var(--dark-text);
+  transition: 200ms;
+  margin-left: 0.5rem;
 }
 
 .todo label {
@@ -111,13 +116,17 @@ h1 {
   display: flex;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  color: #eee;
+  color: var(--dark-text);
 }
 
 .todo span {
+  display: flex;
+  align-items: center;
   padding-left: 20px;
   position: relative;
   cursor: pointer;
+  margin-left: 0.5rem;
+  transition: 200ms;
 }
 
 span::before {
@@ -125,9 +134,9 @@ span::before {
   height: 20px;
   width: 20px;
   position: absolute;
-  margin-left: -30px;
-  border-radius: 100px;
-  border: 2px solid var(--border-color);
+  margin-left: -2rem;
+  border-radius: 25%;
+  background-color: var(--app-color);
 }
 
 input[type='checkbox'] {
@@ -135,24 +144,35 @@ input[type='checkbox'] {
 }
 
 input:checked + span {
-  text-decoration: line-through
+  text-decoration: line-through;
+  margin-left: 0rem;
+  transition: 200ms;
 }
 
-.todo:hover input:checked + span::before, input:checked + span::before {
-  background: #ffffff;
-  border-color: #ac3939;
-}
-
-.todo:hover span::before {
-  border-color: #eee;
+.todo input:checked + span::before{
+  transition: 200ms;
+  width: 1rem;
+  height: 1rem;
+  background-image: linear-gradient(to top right, #FF9A8B, #FF6A88, #FF99AC);
+  border-radius: 50%;
 }
 
 .todo .delete-btn  {
-  background-color: transparent;
-  border: none;
+  background-color: var(--app-color);
+  border-radius: 25%;
+  border-style: none;
   cursor: pointer;
-  color: #eee;
+  color: var(--bg-color);
   font-size: 24px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo .delete-btn:hover  {
+  background-color: var(--red-pink);
 }
 
 .todos-container  {
@@ -180,16 +200,20 @@ input:checked + span {
 
 .filters {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   margin-bottom: 25px;
 }
 
 .filter {
-  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-text);
+  background-color: var(--bg-color);
   padding: 5px 15px;
-  border-radius: 100px;
-  border: 2px solid var(--border-color);
-  transition: all 0.2s ease;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  transition: 200ms;
   cursor: pointer;
 }
 
@@ -198,14 +222,49 @@ input:checked + span {
 }
 
 .delete-all {
+  border-radius: 0.25rem;
   display: flex;
-  color: #eee;
+  color: var(--dark-text);
   padding: 7px 15px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: 200ms;
+  background-color: var(--bg-color);
 }
 
 .delete-all:hover {
-  border-radius: 5px;
-  background-color: var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--red-pink);
+  color: var(--bg-color)
+}
+
+.github{
+  position: fixed;
+  height: 2rem;
+  width: 20rem;
+  background-color: var(--app-color);
+  color: var(--dark-text);
+  bottom: 1.5rem;
+  right: 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  transition: 200ms;
+}
+
+.github:hover{
+  background-image: linear-gradient(to top right, #FF9A8B, #FF6A88, #FF99AC);
+  color: var(--bg-color);
+  transition: 200ms;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+.github{
+  right: 1rem;
 }
